@@ -9,8 +9,6 @@ The MVC (Model-View-Controller) architecture was selected for the Library Manage
 
 Model: Handles the core business logic, such as managing the book inventory, borrowing and returning books, and keeping track of users.
 
-View: Represents the user interface (UI) where users interact with the system. Although a basic CLI is used here, the system can easily be extended to a graphical user interface (GUI) in the future by simply modifying the View.
-
 Controller: Manages user input, communicates with the Model to process data, and updates the View.
 
 
@@ -78,3 +76,14 @@ Role: Provides a way to iterate over the collection of books.
 Observer:
 
 Role: Notifies users when a book they are interested in becomes available.
+
+
+
+
+# Assumption:
+
+Each book in the library has a unique title.
+
+Users are uniquely identified by their names (though the current implementation does not store a list of all registered users).
+
+The library starts with a pre-defined collection of books (added in main method).
