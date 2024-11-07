@@ -80,29 +80,6 @@ Observer:
 Role: Notifies users when a book they are interested in becomes available.
 
 
-# UML
-+-----------------+
-|    Library      |
-+-----------------+
-| - instance      |
-+-----------------+
-| + getInstance() |
-+-----------------+
-
-BookFactory         PhysicalBookFactory       EBookFactory
-   |                         |                   |
-   v                         v                   v
- +---------+           +---------+          +---------+
- |  Book   |<--------- |Physical |          |  EBook  |
- +---------+           +---------+          +---------+
-
-
- Command           BorrowBookCommand         ReturnBookCommand
-    |                       |                       |
-    v                       v                       v
-+--------+         +---------------+       +---------------+
-| execute|<-------| execute: borrow|      | execute: return|
-+--------+         +---------------+       +---------------+
 
 
 # Assumption:
