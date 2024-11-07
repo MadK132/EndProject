@@ -78,3 +78,37 @@ Role: Provides a way to iterate over the collection of books.
 Observer:
 
 Role: Notifies users when a book they are interested in becomes available.
+
+
+# UML
++-----------------+
+|    Library      |
++-----------------+
+| - instance      |
++-----------------+
+| + getInstance() |
++-----------------+
+
+BookFactory         PhysicalBookFactory       EBookFactory
+   |                         |                   |
+   v                         v                   v
+ +---------+           +---------+          +---------+
+ |  Book   |<--------- |Physical |          |  EBook  |
+ +---------+           +---------+          +---------+
+
+
+ Command           BorrowBookCommand         ReturnBookCommand
+    |                       |                       |
+    v                       v                       v
++--------+         +---------------+       +---------------+
+| execute|<-------| execute: borrow|      | execute: return|
++--------+         +---------------+       +---------------+
+
+
+# Assumption:
+
+Each book in the library has a unique title.
+
+Users are uniquely identified by their names (though the current implementation does not store a list of all registered users).
+
+The library starts with a pre-defined collection of books (added in main method).
