@@ -5,11 +5,12 @@ public class LibraryManagementSystem {
     private static LibraryFacade libraryFacade = new LibraryFacade();
 
     public static void main(String[] args) {
-        Book book1 = BookFactory.createBook("Physical", "War and Peace", "Leo Tolstoy");
-        Book book2 = BookFactory.createBook("EBook", "1984", "George Orwell");
-        Book book3 = BookFactory.createBook("Physical", "Moby Dick", "Herman Melville");
-
         Library library = Library.getInstance();
+
+        Book book1 = BookFactory.createBook("Physical", "War and Peace", "Leo Tolstoy", 3);
+        Book book2 = BookFactory.createBook("EBook", "1984", "George Orwell", 5);
+        Book book3 = BookFactory.createBook("Physical", "Moby Dick", "Herman Melville", 2);
+
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -27,7 +28,9 @@ public class LibraryManagementSystem {
             System.out.println("1. View Available Books");
             System.out.println("2. Borrow a Book");
             System.out.println("3. Return a Book");
-            System.out.println("4. Exit");
+            System.out.println("4. Save Library to File");
+            System.out.println("5. Load Library from File");
+            System.out.println("6. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -47,6 +50,12 @@ public class LibraryManagementSystem {
                     returnBook(returnTitle);
                     break;
                 case 4:
+                    library.saveToFile("library.json");
+                    break;
+                case 5:
+                    library.loadFromFile("library.json");
+                    break;
+                case 6:
                     exit = true;
                     System.out.println("Thank you for using the Library Management System!");
                     break;

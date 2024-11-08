@@ -1,0 +1,20 @@
+[
+  {
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "quantity": 2,
+    "type": "Physical"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "quantity": 5,
+    "type": "EBook"
+  },
+  {
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "quantity": 2,
+    "type": "Physical"
+  }
+]

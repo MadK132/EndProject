@@ -2,21 +2,30 @@ public class LibraryFacade {
     private Library library = Library.getInstance();
 
     public void borrowBook(String title) {
-        System.out.println("Borrowing book: " + title);
-        library.removeBook(getBookByTitle(title));
-        library.notifyObservers("The book '" + title + "' has been borrowed.");
+        Book book = getBookByTitle(title);
+        if (book != null && book.getQuantity() > 0) {
+            book.setQuantity(book.getQuantity() - 1);
+            System.out.println("Borrowed book: " + title + " (Remaining: " + book.getQuantity() + ")");
+            library.notifyObservers("The book '" + title + "' has been borrowed.");
+        } else {
+            System.out.println("Sorry, the book '" + title + "' is not available.");
+        }
     }
 
     public void returnBook(String title) {
-        System.out.println("Returning book: " + title);
-        // Assuming that the book is a physical book in this example.
-        library.addBook(new PhysicalBook(title, "Unknown Author"));
-        library.notifyObservers("The book '" + title + "' has been returned.");
+        Book book = getBookByTitle(title);
+        if (book != null) {
+            book.setQuantity(book.getQuantity() + 1);
+            System.out.println("Returned book: " + title + " (Available: " + book.getQuantity() + ")");
+            library.notifyObservers("The book '" + title + "' has been returned.");
+        } else {
+            System.out.println("This book does not exist in the library.");
+        }
     }
 
     private Book getBookByTitle(String title) {
         for (Book book : library.books) {
-            if (book.title.equals(title)) {
+            if (book.title.equalsIgnoreCase(title)) {
                 return book;
             }
         }
