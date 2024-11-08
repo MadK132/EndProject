@@ -77,7 +77,9 @@ Observer:
 
 Role: Notifies users when a book they are interested in becomes available.
 
+BookTypeAdapter:
 
+Role: Handling the serialization and deserialization of polymorphic Book objects (such as PhysicalBook and EBook).
 
 
 # Assumption:
